@@ -43,7 +43,7 @@ async function dbInsert(email, res) {
                 if (err) {
                     if(err) return res.status(500).send({message: err.code})
                 }
-                return res.status(201).send({message: 'witamy na pokładzie!'})
+                return res.status(201);
             });
     });
 }
