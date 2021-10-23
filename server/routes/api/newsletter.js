@@ -15,7 +15,7 @@ const router = express.Router();
 //     }
 // });
 
-
+// POST USER
 router.post('/addToNewsletter/:email', async (req, res) => {
     dbInsert(req.params.email, res)
 });
