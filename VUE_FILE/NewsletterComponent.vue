@@ -25,7 +25,8 @@ export default {
       e.preventDefault();
       return axios.post(`api/newsletter/addToNewsletter/${this.email}`)
       .then(res => {
-        this.message = 'witamy na pokładzie!'
+        this.err = res.data.message
+        this.message = "witamy na pokładzie!"
         this.email = '';
       })
       .catch(err => {
