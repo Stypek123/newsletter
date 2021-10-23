@@ -1,8 +1,6 @@
 import express from 'express';
 import mysql from 'mysql';
 
-
-
 const router = express.Router();
 
 // Get users
@@ -35,15 +33,16 @@ async function dbInsert(email, res) {
     });
 
     con.connect( async err => {
+        if(err) return res.status(500).send({message: err.code}) 
 
         const query = `INSERT INTO newsletter_users(email) VALUES('${mail}')`;
         
         
         con.query(query, (err, result) => {
                 if (err) {
-                    if(err) return res.status(500).send({message: err.code})
+                    if(err) return res.status(405).send({message: err.code})
                 }
-                return res.status(201);
+                return res.status(201).send({message: 'everything is fine'});
             });
     });
 }
